@@ -55,7 +55,7 @@ concurrency:
 env:
   # The one variable that separates the arms: on baseline, action-checkout
   # skips its Set up Chalk step entirely.
-  CHALK_ON: ${{ github.event_name == 'workflow_dispatch' && inputs.leg != 'baseline' }}
+  CHALK_ON: ${{ inputs.leg == 'instrumented' }}
   MAVEN_ARGS: -Dmaven.javadoc.skip=true -Drat.skip=true -Dscalastyle.skip=true -Dspotless.check.skip -Dorg.slf4j.simpleLogger.defaultLogLevel=warn -Pjdbc-shaded,gen-policy -Pflink-provided,hive-provided,spark-provided
   KUBERNETES_VERSION: v1.30.0
   MINIKUBE_VERSION: v1.33.1
